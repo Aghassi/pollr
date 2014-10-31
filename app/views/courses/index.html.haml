@@ -12,6 +12,11 @@
     %tr
       %td= course.name
       %td= course.description
+      %td
+        - if current_user in course.users
+          Enrolled in course
+        - else
+          = link_to 'Join', join_course_path(course)
       %td= link_to 'Show', course
       %td= link_to 'Edit', edit_course_path(course)
       %td= link_to 'Destroy', course, :method => :delete, :data => { :confirm => 'Are you sure?' }

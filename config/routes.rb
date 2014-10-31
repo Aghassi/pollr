@@ -5,7 +5,11 @@ Rails.application.routes.draw do
 
   resources :polls
 
-  resources :courses
+  resources :courses do
+    member do
+      get :join
+    end
+  end
 
   root 'courses#index'
 

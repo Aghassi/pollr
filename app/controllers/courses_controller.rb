@@ -1,5 +1,5 @@
 class CoursesController < ApplicationController
-  before_action :set_course, only: [:show, :edit, :update, :destroy]
+  before_action :set_course, only: [:show, :edit, :update, :destroy, :join]
 
   # GET /courses
   # GET /courses.json
@@ -33,6 +33,21 @@ class CoursesController < ApplicationController
       else
         format.html { render :new }
         format.json { render json: @course.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  # TODO: This should be POST. It's GET now for laziness
+  # GET /courses/1/join
+  # GET /courses/1/join.json
+  def join
+    respond_to do |format|
+      if @course.add_user(current_user)
+        format.html { redirect_to @course, notice: 'Successfully joined course' }
+        format.json { render :show, status: :ok, location: @course }
+      else
+        format.html { redirect_to @course, notice: 'Unable to join course' }
+        format.json { render json: { error: 'Unable to join course' }, status: :unprocessible_entity }
       end
     end
   end
