@@ -13,7 +13,7 @@
       %td= course.name
       %td= course.description
       %td
-        - if current_user in course.users
+        - if course.users.include?(current_user)
           Enrolled in course
         - else
           = link_to 'Join', join_course_path(course)

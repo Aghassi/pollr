@@ -5,7 +5,7 @@ class Course < ActiveRecord::Base
   # Adds a user to the course
   def add_user(user)
     # TODO: Potentially do checks here for if the user is allowed to enroll
-    if user && (user not in self.users)
+    if user && !self.users.include?(user)
       self.users << user
       return true
     else
