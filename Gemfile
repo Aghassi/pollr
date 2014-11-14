@@ -27,3 +27,7 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'spring',        group: :development
 
 gem 'haml-rails'
+
+gem 'rubycas-client', git: 'git://github.com/rubycas/rubycas-client.git'
+gem 'pry'
+gem 'pry-rails'
