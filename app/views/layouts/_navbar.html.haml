@@ -1,0 +1,22 @@
+%header.navbar.navbar-inverse{:role => "navigation"}
+  .container
+    .navbar-header
+      %button.navbar-toggle{"data-target" => ".bs-navbar-collapse", "data-toggle" => "collapse", :type => "button"}
+        %span.sr-only Toggle navigation
+        %span.icon-bar
+        %span.icon-bar
+        %span.icon-bar
+      = link_to 'Pollr', root_path, class: 'navbar-brand'
+    %nav.collapse.navbar-collapse.bs-navbar-collapse{:role => "navigation"}
+      %ul.nav.navbar-nav.navbar-left
+        %li= link_to 'Create Course', new_course_path
+      %ul#navigation-tabs.nav.navbar-nav.navbar-right
+        %li
+          %a Join Course
+        %li
+          %a Create Course
+        %li
+          - if user_signed_in?
+            = link_to current_user.caseid + ' Sign Out', logout_users_path
+          - else
+            = link_to 'Sign In', login_users_path

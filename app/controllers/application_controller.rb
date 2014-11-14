@@ -23,7 +23,7 @@ class ApplicationController < ActionController::Base
   private
 
   def set_current_user
-    if session.has_key('cas_user')
+    if session.has_key?('cas_user')
       @current_user = User.find_or_create_by(caseid: session['cas_user'])
     end
   end
