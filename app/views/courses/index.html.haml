@@ -1,26 +1,27 @@
-%h1 Listing courses
+%h1{:style=>'text-align: center'} Listing courses
 
-%table
-  %tr
-    %th Name
-    %th Description
-    %th
-    %th
-    %th
+%section.container{:style=>'text-align: center'}
 
-  - @courses.each do |course|
-    %tr
-      %td= course.name
-      %td= course.description
-      %td
-        - if course.users.include?(current_user)
-          Enrolled in course
-        - else
-          = link_to 'Join', join_course_path(course)
-      %td= link_to 'Show', course
-      %td= link_to 'Edit', edit_course_path(course)
-      %td= link_to 'Destroy', course, :method => :delete, :data => { :confirm => 'Are you sure?' }
+  %table{:style=>'text-align: center'}
+    %tbody
+      %tr
+        %th Name
+        %th Description
+        %th
+        %th
+        %th
+
+          - @courses.each do |course|
+            %tr
+              %td= course.name
+              %td= course.description
+              %td
+                - if course.users.include?(current_user)
+                  Enrolled in course
+                - else
+                  = link_to 'Join', join_course_path(course)
+              %td= link_to 'Show', course
+              %td= link_to 'Edit', edit_course_path(course)
+              %td= link_to 'Destroy', course, :method => :delete, :data => { :confirm => 'Are you sure?' }
 
 %br
-
-= link_to 'New Course', new_course_path
