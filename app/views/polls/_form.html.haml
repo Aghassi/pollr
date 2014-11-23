@@ -17,9 +17,20 @@
         .actions
           = f.submit 'Save'
     .col-lg-4.col-lg-push-4
-      /TODO fix scrollable
-      /#scrollable.create-questions
       .create-questions
-        %p Insert question here
+        %button{:onclick => 'alert("PENIS")'} 
+          Add question
+          
+    /   /TODO fix scrollable
+    /   /#scrollable.create-questions
+    / .create-questions{:id => 'questions'}
+    /     %script{:type => "text/javascript"}
+    /       var myLink = document.getElementById('addQuestion');
+    /       var questions = document.getElementById('questions');
+    /       questions.innerHTML += "foo";
+    /       myLink.onclick = function () {questions += <field>};
+
+
+
         
         
