@@ -45,6 +45,9 @@ h1 {
   font-size: 2em;
   margin: 0.67em 0;
 }
+.pagetitle {
+  text-align: center;
+}
 abbr[title] {
   border-bottom: 1px dotted;
 }
@@ -419,6 +422,10 @@ h6 {
 }
 h1,
 .h1 {
+  font-size: 36px;
+}
+.pagetitle {
+  text-align: center;
   font-size: 36px;
 }
 h2,
