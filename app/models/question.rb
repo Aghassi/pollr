@@ -1,6 +1,8 @@
 class Question < ActiveRecord::Base
   belongs_to :poll
 
+  has_many :users_questions
+
   def start(user)
     if user.admin_for?(self)
       self.start_time = Time.now

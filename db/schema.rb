@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141123032126) do
+ActiveRecord::Schema.define(version: 20141123041351) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,9 +28,6 @@ ActiveRecord::Schema.define(version: 20141123032126) do
     t.integer "user_id",   null: false
     t.boolean "admin"
   end
-
-  add_index "courses_users", ["course_id"], name: "index_courses_users_on_course_id", using: :btree
-  add_index "courses_users", ["user_id"], name: "index_courses_users_on_user_id", using: :btree
 
   create_table "polls", force: true do |t|
     t.integer  "course_id"
@@ -54,6 +51,12 @@ ActiveRecord::Schema.define(version: 20141123032126) do
 
   add_index "questions", ["poll_id"], name: "index_questions_on_poll_id", using: :btree
 
+  create_table "questions_users", id: false, force: true do |t|
+    t.integer "user_id",     null: false
+    t.integer "question_id", null: false
+    t.integer "answer_id"
+  end
+
   create_table "users", force: true do |t|
     t.string   "caseid"
     t.string   "first_name"
@@ -61,12 +64,6 @@ ActiveRecord::Schema.define(version: 20141123032126) do
     t.boolean  "admin"
     t.datetime "created_at"
     t.datetime "updated_at"
-  end
-
-  create_table "users_questions", force: true do |t|
-    t.integer "user_id"
-    t.integer "question_id"
-    t.integer "answer_id"
   end
 
 end
