@@ -74,6 +74,20 @@ class QuestionsController < ApplicationController
     end
   end
 
+  # POST /questions/1/answer
+  # POST /questions/1/answer.json
+  def answer
+    respond_to do |format|
+      if @question.answer(params[:answer_id], current_user)
+        format.html { redirect_to @question, notice: "You have answered #{params[:answer_id]}" }
+        format.json { render json: { notice: "You have answered #{params[:answer_id]}" } }
+      else
+        format.html { redirect_to @question, error: "Problem submitting answer" }
+        format.json { render json: { error: "Problem submitting answer" } }
+      end
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_question
@@ -82,6 +96,6 @@ class QuestionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def question_params
-      params.require(:question).permit(:answers, :duration, :question)
+      params.require(:question).permit(:answers, :duration, :question, :poll_id, :correct_answer_id)
     end
 end
