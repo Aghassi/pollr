@@ -61,6 +61,19 @@ class QuestionsController < ApplicationController
     end
   end
 
+  # POST /questions/1/start
+  # POST /questions/1/start.json
+  def start
+    respond_to do |format|
+      time = @question.start(current_user)
+      if time
+        format.json { render json: { success: true, start_time: time }, status: :ok }
+      else
+        format.json { render json: { success: false, error: 'Insufficient privileges' } }
+      end
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_question
