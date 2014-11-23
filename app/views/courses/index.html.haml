@@ -1,6 +1,6 @@
-%h1.pagetitle Listing courses
+%h1.pagetitle Existing Courses
 
-%section.container{:style => "width:600px; margin:0 auto;"}
+%section.container.mainpage
 
   %table.table
     %tbody
@@ -21,7 +21,8 @@
               = link_to 'Join', join_course_path(course)
           %td= link_to 'Show Details', course
           //Use an admin check here (if courses_user?(admin=true))
-          -if course.users.include?(current_user) 
+        - if user_signed_in?
+          - if current_user.admin_for?(course) 
             %td= link_to 'Edit', edit_course_path(course)
             %td= link_to 'Destroy', course, :method => :delete, :data => { :confirm => 'Are you sure?' }
 
