@@ -16,8 +16,9 @@ class Course < ActiveRecord::Base
     end
   end
 
-  def admins
-    # XXX: Holy shit this is jank and inefficient as hell
-    courses_and_users.where(admin: true).map(&:user)
+  def add_admin(user)
+    course_user = CoursesUser.where(user_id: user.id, course_id: self.id).first_or_initialize
+    course_user.admin = true
+    course_user.save
   end
 end

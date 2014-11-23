@@ -25,6 +25,7 @@ class CoursesController < ApplicationController
   # POST /courses.json
   def create
     @course = Course.new(course_params)
+    @course.add_admin(current_user)
 
     respond_to do |format|
       if @course.save

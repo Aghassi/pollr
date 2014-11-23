@@ -6,7 +6,12 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :questions
+  resources :questions do
+    member do
+      get :start
+      get :answer
+    end
+  end
 
   resources :polls
 
