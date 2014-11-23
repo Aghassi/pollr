@@ -1,27 +1,28 @@
-%h1{:style=>'text-align: center'} Listing courses
+%h1.pagetitle Listing courses
 
-%section.container{:style=>'text-align: center'}
+%section.container{:style => "width:600px; margin:0 auto;"}
 
-  %table{:style=>'text-align: center'}
+  %table.table
     %tbody
       %tr
         %th Name
         %th Description
+        %th Options
         %th
         %th
-        %th
-
-          - @courses.each do |course|
-            %tr
-              %td= course.name
-              %td= course.description
-              %td
-                - if course.users.include?(current_user)
-                  Enrolled in course
-                - else
-                  = link_to 'Join', join_course_path(course)
-              %td= link_to 'Show', course
-              %td= link_to 'Edit', edit_course_path(course)
-              %td= link_to 'Destroy', course, :method => :delete, :data => { :confirm => 'Are you sure?' }
+      - @courses.each do |course|
+        %tr
+          %td= course.name
+          %td= course.description
+          %td
+            - if course.users.include?(current_user)
+              Enrolled in course
+            - else
+              = link_to 'Join', join_course_path(course)
+          %td= link_to 'Show Details', course
+          //Use an admin check here (if courses_user?(admin=true))
+          -if course.users.include?(current_user) 
+            %td= link_to 'Edit', edit_course_path(course)
+            %td= link_to 'Destroy', course, :method => :delete, :data => { :confirm => 'Are you sure?' }
 
 %br
