@@ -10,16 +10,16 @@
         %th Options
         %th
         %th
+
       - @courses.each do |course|
         %tr
-          %td= course.name
+          %td= link_to course.name, course
           %td= course.description
           %td
             - if course.users.include?(current_user)
               Enrolled in course
             - else
               = link_to 'Join', join_course_path(course)
-          %td= link_to 'Show Details', course
           //Use an admin check here (if courses_user?(admin=true))
         - if user_signed_in?
           - if current_user.admin_for?(course) 
