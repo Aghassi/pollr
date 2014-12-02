@@ -21,9 +21,12 @@
             - else
               = link_to 'Join', join_course_path(course)
           //Use an admin check here (if courses_user?(admin=true))
-        - if user_signed_in?
-          - if current_user.admin_for?(course) 
-            %td= link_to 'Edit', edit_course_path(course)
-            %td= link_to 'Destroy', course, :method => :delete, :data => { :confirm => 'Are you sure?' }
+          - if user_signed_in?
+            - if current_user.admin_for?(course) 
+              %td= link_to 'Edit', edit_course_path(course)
+              %td= link_to 'Destroy', course, :method => :delete, :data => { :confirm => 'Are you sure?' }
+            - else
+              %td
+              %td
 
 %br

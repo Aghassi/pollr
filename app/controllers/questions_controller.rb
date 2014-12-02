@@ -1,10 +1,15 @@
 class QuestionsController < ApplicationController
-  before_action :set_question, only: [:show, :edit, :update, :destroy]
+  before_action :set_question, only: [:show, :edit, :update, :destroy, :results]
 
   # GET /questions
   # GET /questions.json
   def index
     @questions = Question.all
+  end
+
+  # GET /questions/1/results
+  def results
+    @results = @question.users_questions
   end
 
   # GET /questions/1

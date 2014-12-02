@@ -8,12 +8,17 @@ Rails.application.routes.draw do
 
   resources :questions do
     member do
-      get :start
-      get :answer
+      post :start
+      post :answer
+      get :results
     end
   end
 
-  resources :polls
+  resources :polls do
+    member do
+      get :results
+    end
+  end
 
   resources :courses do
     member do

@@ -1,5 +1,5 @@
 = form_for @poll do |f|
-  .create-poll.main-poll
+  .create-poll
     .field
       = f.label :course
       = f.text_field :course
@@ -8,3 +8,4 @@
       = f.datetime_select :date
     .actions
       = f.submit 'Save'
+
