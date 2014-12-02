@@ -3,6 +3,7 @@
 %table.table
   %tr
     %th Course
+    %th Poll
     %th Date
     %th
     %th
@@ -11,11 +12,10 @@
   - @polls.each do |poll|
     %tr
       %td= poll.course
+      %td= poll.name
       %td= poll.date
       %td= link_to 'Show', poll
       %td= link_to 'Edit', edit_poll_path(poll)
       %td= link_to 'Destroy', poll, :method => :delete, :data => { :confirm => 'Are you sure?' }
 
 %br
-
-  = link_to 'New Poll', new_poll_path

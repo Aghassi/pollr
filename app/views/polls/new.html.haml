@@ -13,6 +13,7 @@
         .create-poll
         = render 'form'
       .col-md-6
+        = link_to 'Add Question', new_question_path(:poll_id => @poll.id)
       
 
               

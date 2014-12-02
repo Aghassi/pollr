@@ -1,25 +1,23 @@
 %p#notice= notice
 
-%p
-  %b Name:
+%h1.page-title
   = @course.name
-%p
-  %b Description:
+%h4.page-description
   = @course.description
+.container  
 
-= link_to 'New poll', new_poll_path(course_id: @course.id)
+  = link_to 'New poll', new_poll_path(course_id: @course.id)
+  - if current_user && current_user.admin_for?(@course)
+    \|
+    = link_to 'Edit', edit_course_path(@course)
+  %table.table
+    - @course.polls.each do |poll|
+      %tr
+        %td= link_to poll.name, poll
+        %td= poll.description
+        %td= poll.date
+        %td= link_to 'Edit poll', edit_poll_path
 
-%table.table
-  - @course.polls.each do |poll|
-    %tr
-      %td= link_to poll.name, poll
-      %td= poll.description
-      %td
-        - if @course.users.include?(current_user)
-          Enrolled in course
-        - else
-          = link_to 'Join', join_course_path(@course)
 
-    - if current_user && current_user.admin_for?(@course)
-      = link_to 'Edit', edit_course_path(@course)
-      \|
+
+

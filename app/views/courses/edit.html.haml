@@ -1,4 +1,4 @@
-%h1.pagetitle Editing course
+%h1.page-title Editing course
 
 = form_for @course do |f|
   - if @course.errors.any?
@@ -11,13 +11,23 @@
   .row
     .col-md-6
       .create-poll
+      %h3.page-description Course Information
       = render 'form'
     .col-md-6
-      - @course.polls.each do |poll|
-        .row
-          = link_to poll.name, poll
+      %h3.page-description Polls
+      .row
+        %table.table
+          %th Poll Name
+          %th Poll Date
+          %th Edit Poll
+          -@course.polls.each do |poll|
+            %tr
+              %td= poll.name
+              %td= poll.date
+              %td= link_to 'Edit', poll
+
     
-    = link_to 'Add Poll', new_poll_path(:course_id => @course.id)
+      %h4.page-description= link_to 'Add Poll', new_poll_path(:course_id => @course.id)
 
 
 = link_to 'Show', @course

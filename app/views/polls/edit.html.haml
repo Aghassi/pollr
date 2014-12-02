@@ -1,7 +1,13 @@
-%h1.pagetitle Editing poll
+%h1.page-title Editing poll
 
-= render 'form'
+.container
+  .row
+    .col-md-6
+      .create-poll
+      = render 'form'
+    .col-md-6
+      = link_to 'Add Question', new_question_path(:poll_id => @poll.id)
 
-= link_to 'Show', @poll
+= link_to 'Preview', @poll
 \|
 = link_to 'Back', polls_path
