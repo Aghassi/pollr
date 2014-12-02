@@ -7,6 +7,7 @@
   %b Description:
   = @course.description
 
+= link_to 'New poll', new_poll_path(course_id: @course.id)
 
 %table.table
   - @course.polls.each do |poll|

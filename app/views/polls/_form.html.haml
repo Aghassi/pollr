@@ -9,9 +9,7 @@
     .row
       .col-md-3.col-md-push-1
         .create-poll.main-poll
-          .field
-            = f.label :course
-            = f.text_field :course
+          = f.hidden_field :course_id, value: params[:course_id]
           .field
             = f.label :date
             = f.datetime_select :date
