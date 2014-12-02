@@ -24,7 +24,7 @@ class CoursesController < ApplicationController
   # POST /courses
   # POST /courses.json
   def create
-    @course = Course.new(course_params.merge(creator: current_user)
+    @course = Course.new(course_params.merge(creator: current_user))
 
     respond_to do |format|
       if @course.save
