@@ -20,10 +20,12 @@ class QuestionsController < ApplicationController
   # GET /questions/new
   def new
     @question = Question.new
+    @answers = []
   end
 
   # GET /questions/1/edit
   def edit
+    @answers = @question.answers || []
   end
 
   # POST /questions
@@ -101,6 +103,6 @@ class QuestionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def question_params
-      params.require(:question).permit(:answers, :duration, :question, :poll_id, :correct_answer_id)
+      params.require(:question).permit(:duration, :question, :poll_id, :correct_answer_id, answers: [])
     end
 end

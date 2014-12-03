@@ -14,7 +14,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :polls do
+  resources :polls, except: [:index] do
     member do
       get :results
     end

@@ -1,12 +1,6 @@
 class PollsController < ApplicationController
   before_action :set_poll, only: [:show, :edit, :update, :destroy]
 
-  # GET /polls
-  # GET /polls.json
-  def index
-    @polls = Poll.all
-  end
-
   # GET /polls/1
   # GET /polls/1.json
   def show
