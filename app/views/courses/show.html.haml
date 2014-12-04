@@ -14,6 +14,7 @@
     %th Poll Date
     - if current_user && current_user.admin_for?(@course)
       %th Edit Poll
+      %th Poll Results
     - @course.polls.each do |poll|
       %tr
         %td= link_to poll.name, poll
@@ -21,6 +22,7 @@
         %td= poll.date
         - if current_user && current_user.admin_for?(@course)
           %td= link_to 'Edit', edit_poll_path
+          %td= link_to 'results', results_poll_path
 
 
 

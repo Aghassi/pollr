@@ -1,10 +1,14 @@
-%table.table
-  %tr
-    %th User
-    - @questions.each do |question|
-      %th= question.id
-  - @user_results.each do |user, results|
+%h1.page-title Results for #{@poll.name}
+
+.container
+
+  %table.table
     %tr
-      %td= user.caseid
+      %th User
       - @questions.each do |question|
-        %td= results[question.id].try(:answer_id)
+        %th= question.id
+    - @user_results.each do |user, results|
+      %tr
+        %td= user.caseid
+        - @questions.each do |question|
+          %td= results[question.id].try(:answer_id)

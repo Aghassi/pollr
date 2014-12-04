@@ -22,9 +22,9 @@
           %th Edit Poll
           -@course.polls.each do |poll|
             %tr
-              %td= poll.name
+              %td= link_to poll.name, poll_path(poll.id)
               %td= poll.date
-              %td= link_to 'Edit', poll
+              %td= link_to 'Edit', edit_poll_path(poll.id)
 
     
       %h4.page-description= link_to 'Add Poll', new_poll_path(:course_id => @course.id)
