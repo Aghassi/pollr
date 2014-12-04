@@ -15,7 +15,7 @@
       -@poll.questions.each do |question|
         %tr
           %td= link_to question.question, question
-          %td= question.answers.count
+          %td= question.answers.try(:count) || 0
           %td= question.duration
 
   = link_to 'Edit Course', edit_poll_path(@poll)
