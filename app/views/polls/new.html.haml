@@ -9,21 +9,7 @@
           %li= msg
   .container
     .row
-      .col-md-6
-        .create-poll
+      .well
         = render 'form'
-      .col-md-6
-        = link_to 'Add Question', new_question_path(:poll_id => @poll.id)
-      
 
-              
-    /   /TODO fix scrollable
-    /   /#scrollable.create-questions
-    / .create-questions{:id => 'questions'}
-    /     %script{:type => "text/javascript"}
-    /       var myLink = document.getElementById('addQuestion');
-    /       var questions = document.getElementById('questions');
-    /       questions.innerHTML += "foo";
-    /       myLink.onclick = function () {questions += <field>};
-
-= link_to 'Back', polls_path
+    = link_to 'Back', polls_path

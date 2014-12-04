@@ -4,20 +4,27 @@
   = @course.name
 %h4.page-description
   = @course.description
-.container  
 
-  = link_to 'New poll', new_poll_path(course_id: @course.id)
-  - if current_user && current_user.admin_for?(@course)
-    \|
-    = link_to 'Edit', edit_course_path(@course)
+%h3.page-description
+  Polls
+.container  
   %table.table
+    %th Poll Name
+    %th Poll Description
+    %th Poll Date
+    - if current_user && current_user.admin_for?(@course)
+      %th Edit Poll
     - @course.polls.each do |poll|
       %tr
         %td= link_to poll.name, poll
         %td= poll.description
         %td= poll.date
-        %td= link_to 'Edit poll', edit_poll_path
+        - if current_user && current_user.admin_for?(@course)
+          %td= link_to 'Edit', edit_poll_path
 
 
 
-
+  - if current_user && current_user.admin_for?(@course)
+    = link_to 'New poll', new_poll_path(course_id: @course.id)
+    \|
+    = link_to 'Edit', edit_course_path(@course)
