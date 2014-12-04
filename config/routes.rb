@@ -10,7 +10,6 @@ Rails.application.routes.draw do
     member do
       post :start
       post :answer
-      get :results
     end
   end
 
