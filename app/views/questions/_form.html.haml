@@ -24,7 +24,7 @@
     = f.number_field :duration
   .field#answers
     = f.label :answers
-    = link_to '+', '#', 'data-partial' => "<br/>#{h(f.text_field :answers, multiple: true, value: '')}", class: 'add-answer'
+    = link_to '+', '#', 'data-partial' => "#{new_answer(f)}", class: 'add-answer'
     - @answers.each do |answer|
       .answer
         %br
