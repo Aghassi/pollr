@@ -1,12 +1,23 @@
 %p#notice= notice
 
-%p
-  %b Course:
-  = @poll.course
-%p
-  %b Date:
+%h1.page-title
+  = @poll.course.name
+%h4.page-description
   = @poll.date
 
-= link_to 'NOW EDIT ME', edit_poll_path(@poll)
-\|
-= link_to 'Back', polls_path
+%h3.page-description Polls
+.container
+  .row
+    %table.table
+      %th Question
+      %th Number of Answers
+      %th Duration
+      -@poll.questions.each do |question|
+        %tr
+          %td= link_to question.question, question
+          %td= question.answers.count
+          %td= question.duration
+
+  = link_to 'Edit Course', edit_poll_path(@poll)
+  \|
+  = link_to 'Back', edit_course_path(@poll.course_id)

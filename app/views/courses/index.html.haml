@@ -1,7 +1,31 @@
-%h1.page-title Existing Courses
-
+%h2.page-title My Courses
 %section.container.mainpage
+  %table.table
+    %tbody
+      %tr
+        %th Name
+        %th Description
+        %th Options
+        %th
+        %th
+      - @courses.each do |course|
+        -if course.users.include?(current_user)
+          %tr
+            %td= link_to course.name, course
+            %td= course.description
+            //Use an admin check here (if courses_user?(admin=true))
+            - if user_signed_in?
+              - if current_user.admin_for?(course) 
+                %td= link_to 'Edit', edit_course_path(course)
+                %td= link_to 'Destroy', course, :method => :delete, :data => { :confirm => 'Are you sure?' }
+                %td= 'Results'
+              - else
+                %td
+                %td
+                %td
 
+%h2.page-title Other Courses
+%section.container.mainpage
   %table.table
     %tbody
       %tr
@@ -12,21 +36,22 @@
         %th
 
       - @courses.each do |course|
-        %tr
-          %td= link_to course.name, course
-          %td= course.description
-          %td
-            - if course.users.include?(current_user)
-              Enrolled in course
-            - else
-              = link_to 'Join', join_course_path(course)
-          //Use an admin check here (if courses_user?(admin=true))
-          - if user_signed_in?
-            - if current_user.admin_for?(course) 
-              %td= link_to 'Edit', edit_course_path(course)
-              %td= link_to 'Destroy', course, :method => :delete, :data => { :confirm => 'Are you sure?' }
-            - else
-              %td
-              %td
+        -if !course.users.include?(current_user)
+          %tr
+            %td= link_to course.name, course
+            %td= course.description
+            %td
+              - if course.users.include?(current_user)
+                Enrolled in course
+              - else
+                = link_to 'Join', join_course_path(course)
+            //Use an admin check here (if courses_user?(admin=true))
+            - if user_signed_in?
+              - if current_user.admin_for?(course) 
+                %td= link_to 'Edit', edit_course_path(course)
+                %td= link_to 'Destroy', course, :method => :delete, :data => { :confirm => 'Are you sure?' }
+              - else
+                %td
+                %td
 
 %br
