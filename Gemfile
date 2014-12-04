@@ -28,6 +28,10 @@ gem 'spring',        group: :development
 
 gem 'haml-rails'
 
+gem 'unicorn'
+
 gem 'rubycas-client', git: 'git://github.com/rubycas/rubycas-client.git'
 gem 'pry'
 gem 'pry-rails'
+
+gem 'rails_12factor', group: :production
