@@ -17,7 +17,7 @@
           -@poll.questions.each do |question|
             %tr
               %td= link_to question.question, question_path
-              %td= link_to 'Edit', question
+              %td= link_to 'Edit', edit_question_path
 
       %h4.page-description= link_to 'Add Question', new_question_path(:poll_id => @poll.id)
 

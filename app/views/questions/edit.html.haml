@@ -1,7 +1,8 @@
 %h1.page-title Editing question
 .container
-  = render 'form'
+  .well
+    = render 'form'
 
-= link_to 'Show', @question
-\|
-= link_to 'Back', edit_poll_path
+  = link_to 'Show', @question
+  \|
+  = link_to 'Back', edit_poll_path
