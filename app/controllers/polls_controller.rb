@@ -1,9 +1,15 @@
 class PollsController < ApplicationController
-  before_action :set_poll, only: [:show, :edit, :update, :destroy]
+  before_action :set_poll, only: [:show, :edit, :update, :destroy, :results]
 
   # GET /polls/1
   # GET /polls/1.json
   def show
+  end
+
+  # GET /polls/1/results
+  def results
+    @questions = @poll.questions.includes(results: :user)
+    @user_results = @questions.flat_map(&:results).group_by(&:user).map{|k,v| [k, v.index_by(&:question_id)]}
   end
 
   # GET /polls/new
