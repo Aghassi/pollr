@@ -12,3 +12,5 @@
         %td= user.caseid
         - @questions.each do |question|
           %td= results[question.id].try(:answer_id)
+
+    = link_to 'Back', edit_course_path

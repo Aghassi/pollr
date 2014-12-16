@@ -3,25 +3,26 @@
 %h1.page-title
   = @question.question
 
-%p
-  %b Answers:
-  = @question.answers
-%p
-  %b Correct Answer:
-  = @question.correct_answer_id
+-if !current_user.admin_for?(@question)
+  %p
+    %b Answers:
+    = @question.answers
+  %p
+    %b Correct Answer:
+    = @question.correct_answer_id
 
-%p
-  %b Duration:
-  = @question.duration
+  %p
+    %b Duration:
+    = @question.duration
 
-  .container
-    .row
-      -@question.answers.each_with_index do |answer, i|
-        = button_to answer, answer_question_path(@question.id, answer_id: i)
-
-
+.container
+  .row
+    -@question.answers.each_with_index do |answer, i|
+      = button_to answer, answer_question_path(@question.id, answer_id: i)
 
 
+
+-if !current_user.admin_for?(@question)
   = link_to 'Edit', edit_question_path
   \|
   = link_to 'Back', poll_path(@question.poll_id)
