@@ -16,10 +16,8 @@
 
   .container
     .row
-      -@question.answers.each do |answer|
-        %button
-          =answer
-            
+      -@question.answers.each_with_index do |answer, i|
+        = button_to answer, answer_question_path(@question.id, answer_id: i)
 
 
 
