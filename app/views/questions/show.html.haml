@@ -3,7 +3,7 @@
 %h1.page-title
   = @question.question
 
--if !current_user.admin_for?(@question)
+-if current_user.admin_for?(@question)
   %p
     %b Answers:
     = @question.answers
@@ -22,7 +22,7 @@
 
 
 
--if !current_user.admin_for?(@question)
+-if current_user.admin_for?(@question)
   = link_to 'Edit', edit_question_path
   \|
   = link_to 'Back', poll_path(@question.poll_id)
