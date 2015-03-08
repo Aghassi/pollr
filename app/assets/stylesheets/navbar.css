@@ -1,6 +1,6 @@
-.navbar {
+header.navbar {
 	border-radius: 0;
 }
-.navbar-inverse .navbar-brand {
+header.navbar-inverse .navbar-brand {
 	color: #ACBACA;
 }
