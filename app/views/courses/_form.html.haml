@@ -6,11 +6,11 @@
         - @course.errors.full_messages.each do |msg|
           %li= msg
 
-  .field.row
-    = f.label :name, class: "col-xs-offset-4 col-sm-offset-1 col-md-offset-2 col-lg-offset-2 col-md-4 pull-left"
+  .field.row.text-center
+    = f.label :name, class: "col-xs-offset-4 col-sm-offset-1 col-md-offset-1 col-lg-offset-1 col-md-4 pull-left"
     = f.text_field :name, class: "col-xs-6 col-md-4 pull-right"
-  .field.row
-    = f.label :description, class: "col-xs-offset-4 col-sm-offset-1 col-md-offset-2 col-lg-offset-2 col-md-4 pull-left"
+  .field.row.text-center
+    = f.label :description, class: "col-xs-offset-4 col-sm-offset-1 col-md-offset-1 col-lg-offset-1 col-md-4 pull-left"
     = f.text_area :description, class: "col-xs-6 col-md-4 pull-right"
   .actions.field.text-center
     = f.submit 'Save', class: "btn btn-primary"

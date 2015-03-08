@@ -2,11 +2,11 @@
   .create-poll
     = f.hidden_field :course_id, value: params[:course_id]
 
-    .field
-      = f.label :name
+    .field.text-center
+      = f.label :name, class: "col-xs-offset-4 col-sm-offset-1 col-md-offset-2 col-lg-offset-2 col-md-4 pull-left"
       = f.text_field :name
-    .field
-      = f.label :date
+    .field.text-center
+      = f.label :date,  class: "col-xs-offset-4 col-sm-offset-1 col-md-offset-2 col-lg-offset-2 col-md-4 pull-left"
       = f.datetime_select :date
-    .actions
-      = f.submit 'Save'
+    .actions.field.text-center
+      = f.submit 'Save', class: "btn btn-primary"

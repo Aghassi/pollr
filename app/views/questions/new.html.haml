@@ -1,5 +1,5 @@
 %h1.page-title New question
+.container.well.col-sm-6.col-sm-offset-3.col-md-6.col-md-offset-3
+	= render 'form'
 
-= render 'form'
-
-= link_to 'Back', edit_poll_path(params[:poll_id])
+	= link_to 'Back', edit_poll_path(params[:poll_id])

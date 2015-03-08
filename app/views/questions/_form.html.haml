@@ -16,19 +16,19 @@
 
   = f.hidden_field :poll_id, value: params[:poll_id]
 
-  .field
-    = f.label :question
+  .field.text-center
+    = f.label :question, class: "col-xs-offset-4 col-sm-offset-1 col-md-offset-2 col-lg-offset-2 col-md-4 pull-left"
     = f.text_field :question
-  .field
-    = f.label :duration, 'Duration in seconds'
+  .field.text-center
+    = f.label :duration, 'Duration in seconds', class: "col-xs-offset-4 col-sm-offset-1 col-md-offset-2 col-lg-offset-2 col-md-4 pull-left"
     = f.number_field :duration
-  .field#answers
+  .field#answers.text-center
     = f.label :answers
-    = link_to '+', '#', 'data-partial' => "#{new_answer(f)}", class: 'add-answer'
+    = link_to '+', '#', 'data-partial' => "#{new_answer(f)}", class: "col-xs-offset-2 col-sm-offset-1 col-md-offset-2 col-lg-offset-2 add-answer"
     - @answers.each do |answer|
       .answer
         %br
         = f.text_field :answers, multiple: true, value: answer
         = link_to 'X', '#', class: 'remove-answer'
-  .actions
-    = f.submit 'Save'
+  .actions.field.text-center
+    = f.submit 'Save', class: "btn btn-primary"
